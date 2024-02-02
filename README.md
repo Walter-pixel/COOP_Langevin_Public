@@ -24,51 +24,56 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
 ## Setup
 
-1. Download the official cifar dataset from [Here](https://www.cs.toronto.edu/~kriz/cifar.html) and put is under the folder ``datasets'' in the project directory as 
-  ```
-  COOP_Langevin_Public
-  ├── datasets
-  │   ├── cifar-10-python
-  │   ├── cifar-100-python
-  │...
-  ```
-
-
-2. Create the conda env and clone this repository
-
+1. Create two folders ''datasets'',''clip_pretrained'' under the project directory. Download the official cifar dataset from [Here](https://www.cs.toronto.edu/~kriz/cifar.html) and put it in the ``datasets'' folder. Download the CLIP model pretrained weights from [(Here)](https://drive.google.com/drive/folders/1Jw1u5xkyeY7hkmsyV6nqAKsXL1OMGCg6?usp=sharing) and put it in ''clip_pretrained'' folder. 
     ```
-    # Clone this repo
+    COOP_Langevin_Public
+    ├── datasets
+    │   ├── cifar-10-python
+    │   ├── cifar-100-python
+    ├── clip_pretrained
+    |   ├── RN50.pt
+    |   ├── Vit-B-32.pt
+    │...
+    ```
+2. Clone this repo
+    ```
     git pull https://github.com/Walter-pixel/COOP_Langevin_Public.git main
-    cd Environment/env
-
-    # Create a conda environment
-    conda create -y -n LD_env python=3.9.16
-
-    # Activate the environment
-    conda activate LD_env
-
-    # Install torch and torchvision
-    # Please refer to https://pytorch.org/ if you need a different cuda version
-    conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
-
-
-    # Install dependencies
-    cd ../../
-    pip install -r requirements.txt
-
     ```
-3. item 3
+    
+3. Install dependencies in your conda environment, the Pytorch version ```torch==2.0.1``` is used
+    ```
+    pip install -r requirements.txt
+    ```
 
-## Result on Cifar10-LT
+## Experiment of CIFAR10-LT
+### Code Runs
+1. First pre-train the prompt generator with no noise for imbalanced ratio=200,100,50,10 of CIFAR10-LT.
+    ```
+    cd ./script
+    sh no_noise_train.sh
+    ```
+2. Use the checkpoint saved in the previous step as initialization, now starts Langevin Dynamics training phase
+    ```
+    cd ./script
+    sh LD_train.sh
+    ```
+3. Check the results
+    ```
+    tensorboard --logdir ./log_cifar10 --port 8765
+    ```
 
 
-| Method       | Learn   | Imb=200 | Imb=100 | Imb=50 | Imb=10 |
-|--------------|---------|---------|---------|--------|--------|
-| Variational  | Prompt  | 77.06   | 78.50   | 79.03  | 79.46  |
-| LD 1 model   | Prompt  | 75.25   | 76.15   | 78.33  | 78.70  |
-| LD 80 models | Prompt  | 76.34   | 77.86   | 78.60  | 79.56  |
+ ### Empirical Results
 
+  | Degree of Imbalance  | Learn  | Variational | LD 1-model | LD 80-model |
+  |----------------------|--------|------------:|-----------:|------------:|
+  | Imbalanced Ratio=200 | Prompt |       77.06 |      75.25 |       76.34 |
+  | Imbalanced Ratio=100 | Prompt |       78.50 |      76.15 |       77.86 |
+  | Imbalanced Ratio=50  | Prompt |       79.03 |      78.33 |       78.60 |
+  | Imbalanced Ratio=10  | Prompt |       79.46 |      78.70 |       79.56 |
 
+## Acknowledgements
+Our development is basaed on the CoOp model [(Here)](https://github.com/KaiyangZhou/CoOp), where CoOp is an automatic prompt tunning strategy built for the vision-language foundation model CLIP [(Here)](https://github.com/openai/CLIP).
 
 
 
