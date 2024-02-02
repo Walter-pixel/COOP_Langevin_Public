@@ -1,4 +1,4 @@
-from data.dataloader import *
+from load_data.dataloader import *
 from torch.utils.tensorboard import SummaryWriter
 from utils_my.utils import *
 import argparse
@@ -44,14 +44,11 @@ def main(args):
 
     seed_all(args.seed)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    data_root = {'ImageNet_LT': '/home/walterl/ml20_scratch/walterl/data/ImageNet2012',
-                 'iNaturalist18': '/home/walterl/ml20_scratch/walterl/data/iNaturalist2018',
-                 # 'Places_LT': '/home/walterl/ml20_scratch/walterl/data/places365',
-                 'Places_LT': '/home/walterl/oy30/walterl/data/Places365',
-                 # 'CIFAR100_LT': '/media/wlia0021/hdd/public_dataset/cifar-100-python',
-                 # 'CIFAR10_LT': '/media/wlia0021/hdd/public_dataset/cifar-10-python'}
-                 'CIFAR100_LT': '/home/walterl/ml20_scratch/walterl/data/cifar100',
-                 'CIFAR10_LT': '/home/walterl/ml20_scratch/walterl/data/cifar10'}
+    data_root = {'ImageNet_LT': './datasets/ImageNet2012',
+                 'iNaturalist18': './datasets/iNaturalist2018',
+                 'Places_LT': './datasets/Places365',
+                 'CIFAR100_LT': './datasets/cifar-100-python',
+                 'CIFAR10_LT': './datasets/cifar-10-python'}
 
 
     # generated sub-datasets all have test split
@@ -165,7 +162,7 @@ def main(args):
 
 
 
-    # Contrastive Training Script
+    # Training Script
     print('\n----- Training Starts-----\n')
     if last_epoch < 0:
         e_start = 0
@@ -240,7 +237,7 @@ def main(args):
 
     info.writer.close()
     Save_all(imb_clip_model, args, epoch, optim_prompt, loss_main=0)
-    print('\n-----LD Contrastive Training Ends-----\n')
+    print('\n-----LD Training Ends-----\n')
 
 
 
@@ -480,9 +477,9 @@ def eval_all_cached_models(loader, args, info, epoch, imb_clip_model, contr_adj_
         % (low_acc_top1)
     ]
     print(print_str)
-    info.writer.add_scalar('AllModel/' + phase + '_acc_many', many_acc_top1, epoch)
-    info.writer.add_scalar('AllModel/' + phase + '_acc_median', median_acc_top1, epoch)
-    info.writer.add_scalar('AllModel/' + phase + '_acc_few', low_acc_top1, epoch)
+    info.writer.add_scalar('All Model/' + phase + '_acc_many', many_acc_top1, epoch)
+    info.writer.add_scalar('All Model/' + phase + '_acc_median', median_acc_top1, epoch)
+    info.writer.add_scalar('All Model/' + phase + '_acc_few', low_acc_top1, epoch)
 
 
 
