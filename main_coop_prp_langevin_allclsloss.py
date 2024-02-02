@@ -641,7 +641,7 @@ class info_store:
 
 
 
-def Save_all(imb_clip_model, args, epoch, optim_prompt, loss):
+def Save_all(imb_clip_model, args, epoch, optim_prompt, loss_main):
     save_path = os.path.join(args.tensorboard, 'saved_prompts_at_training')
     if not os.path.exists(save_path):
         os.makedirs(save_path)
@@ -651,7 +651,7 @@ def Save_all(imb_clip_model, args, epoch, optim_prompt, loss):
         'config': args,
         'at_epoch': epoch,
         'optim_prompt_state_dict': optim_prompt.state_dict(),
-        'loss': loss,
+        'loss': loss_main,
     }, os.path.join(save_path, f"prp_epoch_{epoch}.pth"))
 
 

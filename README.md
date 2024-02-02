@@ -47,15 +47,15 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
 ## Experiment of CIFAR10-LT
 ### Code Runs
-1. First pre-train the prompt generator with no noise for imbalanced ratio=200,100,50,10 of CIFAR10-LT.
+1. First pre-train the prompt generator with no noise for imbalanced ratio=.005/.01/.02/.1 of CIFAR10-LT. The smaller imbalanced ratio here stands for a more imbalnaced scanerio.
     ```
     cd ./script
-    sh no_noise_train.sh
+    bash no_noise_train.sh
     ```
 2. Use the checkpoint saved in the previous step as initialization, now starts Langevin Dynamics training phase
     ```
     cd ./script
-    sh LD_train.sh
+    bash LD_train.sh
     ```
 3. Check the results
     ```
@@ -65,12 +65,13 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
  ### Empirical Results
 
+
   | Degree of Imbalance  | Learn  | Variational | LD 1-model | LD 80-model |
   |----------------------|--------|------------:|-----------:|------------:|
-  | Imbalanced Ratio=200 | Prompt |       77.06 |      75.25 |       76.34 |
-  | Imbalanced Ratio=100 | Prompt |       78.50 |      76.15 |       77.86 |
-  | Imbalanced Ratio=50  | Prompt |       79.03 |      78.33 |       78.60 |
-  | Imbalanced Ratio=10  | Prompt |       79.46 |      78.70 |       79.56 |
+  | Imbalanced Ratio=.005 | Prompt |       77.06 |      75.25 |       76.34 |
+  | Imbalanced Ratio=.01 | Prompt |       78.50 |      76.15 |       77.86 |
+  | Imbalanced Ratio=.02  | Prompt |       79.03 |      78.33 |       78.60 |
+  | Imbalanced Ratio=.0  | Prompt |       79.46 |      78.70 |       79.56 |
 
 ## Acknowledgements
 Our development is basaed on the CoOp model [(Here)](https://github.com/KaiyangZhou/CoOp), where CoOp is an automatic prompt tunning strategy built for the vision-language foundation model CLIP [(Here)](https://github.com/openai/CLIP).

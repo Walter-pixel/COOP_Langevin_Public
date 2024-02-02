@@ -29,7 +29,7 @@ def load_clip_to_cpu(vision_backbone_name, download_root: str = None):
         print(f"Error: Specified clip vision model is not supported in CLIP ckeckpoint")
 
     url = clip._MODELS[vision_backbone_name]
-    model_path = clip._download(url, download_root or osp.expanduser("./ckpt_clip_github"))
+    model_path = clip._download(url, download_root or osp.expanduser("./clip_pretrained"))
 
     try:
         # loading JIT archive

@@ -23,11 +23,8 @@ import os
 from PIL import Image
 # from data.ImbalanceCIFAR import IMBALANCECIFAR10_resolution, IMBALANCECIFAR100_resolution
 # from torch.utils.data import DistributedSampler # for ddp use
-from torchsampler import ImbalancedDatasetSampler
-from data.ImbalanceCIFAR import IMBALANCECIFAR10, IMBALANCECIFAR100
-
-
-from data.MySampler import *
+from load_data.ImbalanceCIFAR import IMBALANCECIFAR10, IMBALANCECIFAR100
+from load_data.MySampler import *
 
 # Image statistics
 RGB_statistics = {
@@ -171,18 +168,7 @@ def load_data(data_root, dataset, phase, batch_size, batch_size_tst_val, top_k_c
         lb = set_.labels[idx]
         imb_num_per_cls[lb] += 1
 
-    if phase == 'train' and bal_sampler == "True":
-        print(f'=====> Phase {phase} loader created')
-        print(f'======> balanced sampler used')
-        print(f"{phase} loader # of sample per-class:\n {imb_num_per_cls}")
-        return torch.FloatTensor(set_.img_num_list) / torch.FloatTensor(set_.img_num_list).sum(), \
-            DataLoader(dataset=set_,
-                       batch_size=batch_size,
-                       num_workers=num_workers,
-                       sampler=ImbalancedDatasetSampler(set_)
-                       ), \
-            imb_num_per_cls
-    elif phase == 'train' and bal_sampler == "False":
+    if phase == 'train' and bal_sampler == "False":
         print('=====> Shuffle is %s.' % (shuffle))
         print(f'=====> Phase {phase} loader created')
         print(f'======> No sampler used')
