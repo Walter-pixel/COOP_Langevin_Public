@@ -1,7 +1,7 @@
-clip_pretrained/model/
+clip_pretrained/**
 jobs/
 log_cifar10/
 wandb/
 datasets/
-Environment/env
+Environment/**
 

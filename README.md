@@ -38,7 +38,7 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
     ```
     # Clone this repo
-    https://github.com/Walter-pixel/COOP_Langevin_Public.git
+    git pull https://github.com/Walter-pixel/COOP_Langevin_Public.git main
     cd Environment/env
 
     # Create a conda environment
