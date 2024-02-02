@@ -65,6 +65,7 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
  ### Empirical Results
 
+Below is the result of balanced test set accuracy using models that were previously trained on different imbalanced ratio training dataset. "LD 1-model" means only taking one model saved at the last LD training phase; while "LD 80-model" means using the saved models from the last 80 epochs of the LD training phase to carry out the hard ensemble voting. 
 
   | Degree of Imbalance  | Learn  | Variational | LD 1-model | LD 80-model |
   |----------------------|--------|------------:|-----------:|------------:|
