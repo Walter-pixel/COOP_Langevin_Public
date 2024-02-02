@@ -4,10 +4,10 @@
 ## Background
 This repository uses Langevin Dynamics in optimisation where each step of the optimisation update resembles the sampled prompt parameters from the underlying prompt distribution. By saving the sampled prompt along the Langevin Dynamics Sampling trajectory, we then later used them to conduct hard ensemble voting in test time prediction. The intuitive idea of Langevin Dynamics Sampling versus the variational approach is shown in the figure below:
 
-<figure align="center">
+<p align="center">
   <img src="figures/variational_vs_sampling.png", style="width:450px;">
   <br> Fig.1: The distribution in green is the target distribution to estimate. The orange distribution in the left fits a Gaussian function on the target green distribution, while the orange dots in the right represent a direct sampling from the target green distribution where those dots reside in the high probability region of the target distribution.
-</figure>
+</p>
 
 
 To better show how the sampling is performed in the Langevin Dynamics, consider a stationary distribution in Fig. 2 which is unknown in its analytical expression to the Langevin Dynamics particle, where the darker colour represent a higher density region, and the orange dot represent the footprint of the Langevin Dynamics particle's movement. As the iteration progress from 1 to 240, we can see the orange footprints visit the high density region more, hence recovering the underlying unknown blue distribution.
