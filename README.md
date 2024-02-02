@@ -71,7 +71,7 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
   | Imbalanced Ratio=.005 | Prompt |       77.06 |      75.25 |       76.34 |
   | Imbalanced Ratio=.01 | Prompt |       78.50 |      76.15 |       77.86 |
   | Imbalanced Ratio=.02  | Prompt |       79.03 |      78.33 |       78.60 |
-  | Imbalanced Ratio=.0  | Prompt |       79.46 |      78.70 |       79.56 |
+  | Imbalanced Ratio=.1  | Prompt |       79.46 |      78.70 |       79.56 |
 
 ## Acknowledgements
 Our development is basaed on the CoOp model [(Here)](https://github.com/KaiyangZhou/CoOp), where CoOp is an automatic prompt tunning strategy built for the vision-language foundation model CLIP [(Here)](https://github.com/openai/CLIP).
