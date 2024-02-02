@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/log_places_vit_prp" />
+      <excludeFolder url="file://$MODULE_DIR$/jobs" />
+      <excludeFolder url="file://$MODULE_DIR$/log_places" />
+      <excludeFolder url="file://$MODULE_DIR$/log_imagenet" />
+      <excludeFolder url="file://$MODULE_DIR$/log_cifar10" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.9 (torch_env) (3)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+</module>

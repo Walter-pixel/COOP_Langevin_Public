@@ -1,0 +1,23 @@
+
+
+
+source /home/walterl/ml20_scratch/walterl/miniconda/bin/activate torch_env
+cd /home/walterl/ml20_scratch/walterl/Langevin_Dynamics/COOP_Langevin
+tensorboard --logdir log_places --port 8777
+
+
+
+
+source /home/walterl/ml20_scratch/walterl/miniconda/bin/activate torch_env
+cd /home/walterl/ml20_scratch/walterl/Langevin_Dynamics/COOP_Langevin
+tensorboard --logdir log_imagenet/rn50_prp_spec --port 8989
+
+
+# cifar
+source /home/walterl/ml20_scratch/walterl/miniconda/bin/activate torch_env
+cd /home/walterl/ml20_scratch/walterl/Langevin_Dynamics/COOP_Langevin
+tensorboard --logdir log_cifar10/ --port 7788
+
+
+
+

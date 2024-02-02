@@ -1,0 +1,5 @@
+Jn 17 2023
+
+- Things in this folder are my development that use clip as the foundation
+- Borrow code from CoOp to learn the prompt for Clip model
+- It is contrastive loss friendly--> accept mini-batch classes / or all classes together to feed to text encoder
