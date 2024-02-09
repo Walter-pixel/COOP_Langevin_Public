@@ -6,11 +6,11 @@ This repository uses Langevin Dynamics in optimisation where each step of the op
 
 <p align="center">
   <img src="figures/variational_vs_sampling.png", style="width:450px;">
-  <br> Fig.1: The distribution in green is the target distribution to estimate. The orange distribution in the left fits a Gaussian function on the target green distribution, while the orange dots in the right represent a direct sampling from the target green distribution where those dots reside in the high probability region of the target distribution.
+  <br> Fig.1: The distribution in green is the target distribution to estimate. For the variational approach, the orange distribution on the left fits a Gaussian function on the target green distribution. In contrast, in the sampling-based method in the figure on the right, the orange dots are drawn directly from the target green distribution. As we can see, the sample drawn often comes from the high probability region of the target distribution.
 </p>
 
 
-To better show how the sampling is performed in the Langevin Dynamics, consider a stationary distribution in Fig. 2 which is unknown in its analytical expression to the Langevin Dynamics particle, where the darker colour represent a higher density region, and the orange dot represent the footprint of the Langevin Dynamics particle's movement. As the iteration progress from 1 to 240, we can see the orange footprints visit the high density region more, hence recovering the underlying unknown blue distribution.
+To better show how the sampling is conducted using the Langevin Dynamics, consider a stationary distribution in Fig. 2, which is unknown in its analytical expression to the Langevin Dynamics particle, where the darker colour represents a higher density region. The orange dot represents the footprint of the Langevin Dynamics particle's movement. As the iteration progresses from 1 to 240, we can see the orange footprints visit the high-density region more, hence recovering the underlying unknown blue distribution.
 
 
 <p align="center">
@@ -65,7 +65,7 @@ To better show how the sampling is performed in the Langevin Dynamics, consider 
 
  ### Empirical Results
 
-Below is the result of balanced test set accuracy using models that were previously trained on different imbalanced ratio training dataset. "LD 1-model" means only taking one model saved at the last LD training phase; while "LD 80-model" means using the saved models from the last 80 epochs of the LD training phase to carry out the hard ensemble voting. 
+Below is the result of balanced test set accuracy using models that were previously trained on different imbalanced ratio training datasets. "LD 1-model" means only taking one model saved at the last LD training phase, while "LD 80-model" means using the saved models from the last 80 epochs of the LD training phase to carry out the hard ensemble voting. 
 
   | Degree of Imbalance  | Learn  | Variational | LD 1-model | LD 80-model |
   |----------------------|--------|------------:|-----------:|------------:|
